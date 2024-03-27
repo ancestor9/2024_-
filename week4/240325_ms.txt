@@ -1,0 +1,2 @@
+https://visualstudio.microsoft.com/ko/visual-cpp-build-tools/ 인스톨
+https://git-scm.com/downloads 인스톨
