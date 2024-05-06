@@ -1,5 +1,13 @@
-Pandas, matplotlib, seaborn
+Lets' install streamlit library in your own virtual environment ;
+## https://docs.streamlit.io/get-started/installation
+pip install streamlit
+streamlit run **.py
 
+You should understand the data visualization before runing streamlit !!
+
+That's why you understand the modules like Pandas(gorupby), matplotlib, seaborn.
+
+I prepared this scripts with referencing the below book;
 Python Data Science Handbook>> refer to Chapter 4. Data Visulaization
 https://github.com/jakevdp/PythonDataScienceHandbook
 https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/notebooks
