@@ -1,95 +1,52 @@
-# Using FastAPI to Build Python Web APIs
-# https://realpython.com/fastapi-python-web-apis/
-
-from fastapi import FastAPI
+# Import Needed Libraries
+import joblib
+import uvicorn
+import numpy as np
+import pandas as pd
 from pydantic import BaseModel
-from typing import Optional
 
-app = FastAPI()
+# FastAPI libray
+from fastapi import FastAPI
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
+# Initiate app instance
+app = FastAPI(title='Car Price Prediction', version='1.0',
+              description='Linear Regression model is used for prediction')
 
-@app.get("/items/{item_id}")
-async def read_item(item_id: str):
-    return {"item_id": item_id}
+# Initialize model artifacte files. This will be loaded at the start of FastAPI model server.
+model = joblib.load("LinearRegressionModel.joblib")
 
-@app.get("/products/{product_id}")
-async def read_product(product_id: int):
-    return {"product_id": product_id}
+# This struture will be used for Json validation.
+# With just that Python type declaration, FastAPI will perform below operations on the request data
+## 1) Read the body of the request as JSON.
+## 2) Convert the corresponding types (if needed).
+## 3) Validate the data.If the data is invalid, it will return a nice and clear error, 
+##    indicating exactly where and what was the incorrect data.
 
-class ItemResponse(BaseModel):
-    item_id: str
-
-@app.get("/model/", response_model=ItemResponse)
-async def read_model():
-    return {"item_id": "12"}
-
-@app.get("/users/me")
-async def read_user_me():
-    return {"user_id": "the current user"}
-
-@app.get("/users/{user_id}")
-async def read_user(user_id: str):
-    return {"user_id": user_id}
-
-class Item(BaseModel):
+class Data(BaseModel):
     name: str
-    description: Optional[str] = None
-    price: float
-    tax: Optional[float] = None
+    company: str
+    year: int
+    kms_driven: float
+    fuel_type: str  
 
-@app.post("/things/")
-async def create_item(item: Item):
-    return item
+# Api root or home endpoint
+@app.get('/')
+@app.get('/home')
+def read_home():
+    """
+     Home endpoint which can be used to test the availability of the application.
+     """
+    return {'message': 'System is healthy'}
 
+# ML API endpoint for making prediction aganist the request received from client
+@app.post("/predict")
+def predict(data: Data):
 
+    result = model.predict(pd.DataFrame(columns=['name','company','year','kms_driven','fuel_type'],
+                                        data=np.array([data.name,data.company,data.year,data.kms_driven,data.fuel_type]).reshape(1,5)))[0]
+    return result
 
-# # main.py
-# from fastapi import FastAPI
-# app = FastAPI()
+if __name__ == '__main__':
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
 
-# @app.get("/")
-# async def root():
-#     return {"message": "Hello World"}
-
-# @app.get("/items/{item_id}")
-# async def read_item(item_id):
-#     return {"item_id": item_id}
-
-# @app.get("/products/{product_id}")
-# async def read_item(product_id: int):
-#     return {"product_id": product_id}
-
-# from pydantic import BaseModel
-# class ItemResponse(BaseModel):
-#     item_id: str
-
-# @app.get("/model/", response_model=ItemResponse)
-# async def root():
-#     return {"item_id": "12"}
-
-
-# @app.get("/users/me")
-# async def read_user_me():
-#     return {"user_id": "the current user"}
-
-# @app.get("/users/{user_id}")
-# async def read_user(user_id: str):
-#     return {"user_id": user_id}
-
-# from typing import Optional
-# from pydantic import BaseModel
-
-# class Item(BaseModel):
-#     name: str
-#     description: Optional[str] = None
-#     price: float
-#     tax: Optional[float] = None
-
-# app = FastAPI()
-
-# @app.post("/things/")
-# async def create_item(item: Item):
-#     return item
+## >> streamlit run frontend/app.py
