@@ -1,6 +1,14 @@
-fastaoi와 streamlit 실습은 아래 github에서 다운 받아 app.py, main.py를 사용하라
-git clone https://github.com/furkankizilay/car-price-prediction/tree/main
-데이터전처리와 모델생성 코드는 predict-car-price.ipynb, 단 
-LinearRegressionModel.joblib ===> version이 맞아야되니 다시 실행해서 모델을 저장하라
+1. Streamlit: session_stae
+  streamlit_count_w_st.py
+  streamlit_count_wo_st.py
 
-Python and REST APIs_cat-images.ipynb 파일은 HTTP RESTAPI 실습파일이니 참고
+2. FastAPI
+  2.1. fastaoi와 streamlit 실습은 아래 github에서 다운 받아 app.py, main.py를 사용하라
+        . git clone https://github.com/furkankizilay/car-price-prediction/tree/main
+        . 데이터전처리와 모델생성 코드는 predict-car-price.ipynb, 단 
+        . LinearRegressionModel.joblib ===> version이 맞아야되니 다시 실행해서 모델을 저장하라
+  
+  2.2. Python and REST APIs_cat-images.ipynb 파일은 HTTP RESTAPI 실습파일이니 참고
+  
+  2.3. main_realpython.py : fast API 기본 예제
+
