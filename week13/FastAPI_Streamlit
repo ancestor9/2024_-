@@ -14,4 +14,8 @@
         . 데이터전처리와 모델생성 코드는 predict-car-price.ipynb, 단 
         . LinearRegressionModel.joblib ===> version이 맞아야되니 다시 실행해서 모델을 저장하라
 
+4.  Pokemon 실습
+  4.1. https://github.com/yeomko22/practice_streamlit : >> git clone https://github.com/yeomko22/practice_streamlit
+  4.2. https://www.youtube.com/playlist?list=PLR4H8X__Qok291XbTXW-9u_u-9XHynfmT : 동영상 소개 (위 코드의 동영상)
+
 
