@@ -12,7 +12,8 @@
 
 3. FastAPI  
   3.1. main_realpython.py : fast API 기본 예제
-  3.2. fastapi와 streamlit 실습은 아래 github에서 다운 받아 app.py, main.py를 사용하라
+  3,2, predict-car-price.ipynb : 입력데이터를 예측 알고리즘에 투입하여 모형을 개발/저장
+  3.3. fastapi와 streamlit 실습은 아래 github에서 다운 받아 app.py, main.py를 사용하라
         . git clone https://github.com/furkankizilay/car-price-prediction/tree/main
         . 데이터전처리와 모델생성 코드는 predict-car-price.ipynb, 단 
         . LinearRegressionModel.joblib ===> version이 맞아야되니 다시 실행해서 모델을 저장하라
