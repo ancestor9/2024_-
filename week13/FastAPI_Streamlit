@@ -10,7 +10,7 @@
   2.1. Buffer_Stream.ipynb
   2.2. Python and REST APIs_cat-images.ipynb 파일은 HTTP RESTAPI 실습파일이니 참고
 
-3. FastAPI  
+3. FastAPI(Backend)  + Streamlit(Front end)
   3.1. main_realpython.py : fast API 기본 예제
   3,2, predict-car-price.ipynb : 입력데이터를 예측 알고리즘에 투입하여 모형을 개발/저장
   3.3. fastapi와 streamlit 실습은 아래 github에서 다운 받아 app.py, main.py를 사용하라
