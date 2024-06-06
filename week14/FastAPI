@@ -1,1 +1,6 @@
+학습 목표 및 순서
+1. main_realpython.py로 기초적인 Fast API를 실습
 
+2. 관련 코드는 : https://github.com/furkankizilay/car-price-prediction/ 참조 (git clone 하며 코드를 실행하고 이해하기)
+2.1 모델은 실습 환경의 scikit-learn의 버젼에 맞게 week14/predict-car-price.ipynb를 run해서 모델을 저장하라
+2.2 app.py와 main.py를 run하여 화면을 확인하라 
